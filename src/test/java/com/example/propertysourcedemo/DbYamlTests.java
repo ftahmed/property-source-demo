@@ -30,9 +30,17 @@ public class DbYamlTests {
 
 	@Test
 	public void dbPropertiesEnv() {
+		// TODO Yaml gets 'flattened' when used in @PropertySource with @ConfigurationProperties.
+		//      Also @ConfigurationProperties can't take a prefix. Need to investigate further to understand.
+		//      https://github.com/spring-projects/spring-boot/issues/9104
+		assertEquals("dburl", env.getProperty("url"));
+		assertEquals("dburl", env.getProperty("db.url"));
+	}
+
+	@Test
+	public void dbPropertiesBean() {
 		assertEquals("dburl", dbYaml.getUrl());
 		assertEquals("dbuser", dbYaml.getUsername());
 		assertEquals("dbpass", dbYaml.getPassword());
 	}
-
 }

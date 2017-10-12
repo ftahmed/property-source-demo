@@ -1,4 +1,4 @@
-#db:
-url: dburl
-username: dbuser
-password: dbpass
+db:
+  url: dburl
+  username: dbuser
+  password: dbpass
